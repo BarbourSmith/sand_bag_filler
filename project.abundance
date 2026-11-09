@@ -7,6 +7,83 @@
   "topLevel": true,
   "allAtoms": [
     {
+      "atomType": "Move",
+      "x": 0.3628,
+      "y": 0.6916,
+      "uniqueID": "id-119",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "xDist",
+          "ioValue": 0
+        },
+        {
+          "name": "yDist",
+          "ioValue": -65
+        },
+        {
+          "name": "zDist",
+          "ioValue": 0
+        }
+      ]
+    },
+    {
+      "atomType": "Circle",
+      "x": 0.19,
+      "y": 0.32,
+      "uniqueID": "id-125",
+      "ioValues": [
+        {
+          "name": "diameter",
+          "ioValue": 260
+        }
+      ]
+    },
+    {
+      "atomType": "Move",
+      "x": 0.36,
+      "y": 0.32,
+      "uniqueID": "id-128",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "xDist",
+          "ioValue": 0
+        },
+        {
+          "name": "yDist",
+          "ioValue": 30
+        },
+        {
+          "name": "zDist",
+          "ioValue": 0
+        }
+      ]
+    },
+    {
+      "atomType": "Fusion",
+      "x": 0.54,
+      "y": 0.45,
+      "uniqueID": "id-134",
+      "ioValues": [
+        {
+          "name": "Shape 1",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "Shape2",
+          "ioValue": "__GEOMETRY_INPUT__"
+        }
+      ],
+      "unionType": "Fusion"
+    },
+    {
       "atomType": "Output",
       "x": 0.9729,
       "y": 0.4892,
@@ -20,8 +97,8 @@
     },
     {
       "atomType": "Rectangle",
-      "x": 0.5053,
-      "y": 0.5161,
+      "x": 0.1901,
+      "y": 0.6801,
       "uniqueID": "id-4",
       "ioValues": [
         {
@@ -31,15 +108,14 @@
         },
         {
           "name": "y length",
-          "ioValue": 320,
-          "currentEquation": "320"
+          "ioValue": 190
         }
       ]
     },
     {
       "atomType": "Extrude",
-      "x": 0.5761,
-      "y": 0.6156,
+      "x": 0.7371,
+      "y": 0.4496,
       "uniqueID": "id-8",
       "ioValues": [
         {
@@ -56,9 +132,29 @@
   ],
   "allConnectors": [
     {
+      "ap2Name": "Shape 1",
+      "ap1ID": "id-119",
+      "ap2ID": "id-134"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-125",
+      "ap2ID": "id-128"
+    },
+    {
+      "ap2Name": "Shape2",
+      "ap1ID": "id-128",
+      "ap2ID": "id-134"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-134",
+      "ap2ID": "id-8"
+    },
+    {
       "ap2Name": "geometry",
       "ap1ID": "id-4",
-      "ap2ID": "id-8"
+      "ap2ID": "id-119"
     },
     {
       "ap2Name": "number or geometry",
