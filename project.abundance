@@ -46,7 +46,7 @@
             },
             {
               "name": "HandleLength",
-              "ioValue": 120
+              "ioValue": 160
             },
             {
               "name": "SideProjection",
@@ -55,11 +55,16 @@
             {
               "name": "CornerRadius",
               "ioValue": 10
+            },
+            {
+              "name": "ShoulderRadius",
+              "ioValue": 30,
+              "currentEquation": "30"
             }
           ],
           "interpreterVersion": 1,
-          "code": "function run(\n  BodyWidth: number = 220,\n  TotalLength: number = 320,\n  InsertionClearance: number = 50,\n  HandleLength: number = 120,\n  SideProjection: number = 50,\n  CornerRadius: number = 10\n): Assembly {\n  const b = BodyWidth/2, r = CornerRadius, k = Math.SQRT1_2;\n  const bottom = -TotalLength/2, crown = TotalLength/2-b;\n  const low = bottom+InsertionClearance+r, high = low+HandleLength;\n  const edge = b+SideProjection;\n  if (high+r >= crown || SideProjection < 2*r || BodyWidth <= 2*r) {\n    throw new Error(\"Increase length or reduce handle size so the rounded shoulders fit below the crown.\");\n  }\n  const outline = replicad.draw([-b+r,bottom])\n    .lineTo([b-r,bottom])\n    .threePointsArcTo([b,bottom+r],[b-r+r*k,bottom+r-r*k])\n    .lineTo([b,low-r])\n    .threePointsArcTo([b+r,low],[b+r-r*k,low-r+r*k])\n    .lineTo([edge-r,low])\n    .threePointsArcTo([edge,low+r],[edge-r+r*k,low+r-r*k])\n    .lineTo([edge,high-r])\n    .threePointsArcTo([edge-r,high],[edge-r+r*k,high-r+r*k])\n    .lineTo([b+r,high])\n    .threePointsArcTo([b,high+r],[b+r-r*k,high+r-r*k])\n    .lineTo([b,crown])\n    .threePointsArcTo([-b,crown],[0,crown+b])\n    .lineTo([-b,high+r])\n    .threePointsArcTo([-b-r,high],[-b-r+r*k,high+r-r*k])\n    .lineTo([-edge+r,high])\n    .threePointsArcTo([-edge,high-r],[-edge+r-r*k,high-r+r*k])\n    .lineTo([-edge,low+r])\n    .threePointsArcTo([-edge+r,low],[-edge+r-r*k,low+r-r*k])\n    .lineTo([-b-r,low])\n    .threePointsArcTo([-b,low-r],[-b-r+r*k,low-r+r*k])\n    .lineTo([-b,bottom+r])\n    .threePointsArcTo([-b+r,bottom],[-b+r-r*k,bottom+r-r*k])\n    .close();\n  return new Assembly({geometry:outline,color:\"#aad7f2\"});\n}",
-          "compiledCode": "\"use strict\";\nfunction run(BodyWidth = 220, TotalLength = 320, InsertionClearance = 50, HandleLength = 120, SideProjection = 50, CornerRadius = 10) {\n    const b = BodyWidth / 2, r = CornerRadius, k = Math.SQRT1_2;\n    const bottom = -TotalLength / 2, crown = TotalLength / 2 - b;\n    const low = bottom + InsertionClearance + r, high = low + HandleLength;\n    const edge = b + SideProjection;\n    if (high + r >= crown || SideProjection < 2 * r || BodyWidth <= 2 * r) {\n        throw new Error(\"Increase length or reduce handle size so the rounded shoulders fit below the crown.\");\n    }\n    const outline = replicad.draw([-b + r, bottom])\n        .lineTo([b - r, bottom])\n        .threePointsArcTo([b, bottom + r], [b - r + r * k, bottom + r - r * k])\n        .lineTo([b, low - r])\n        .threePointsArcTo([b + r, low], [b + r - r * k, low - r + r * k])\n        .lineTo([edge - r, low])\n        .threePointsArcTo([edge, low + r], [edge - r + r * k, low + r - r * k])\n        .lineTo([edge, high - r])\n        .threePointsArcTo([edge - r, high], [edge - r + r * k, high - r + r * k])\n        .lineTo([b + r, high])\n        .threePointsArcTo([b, high + r], [b + r - r * k, high + r - r * k])\n        .lineTo([b, crown])\n        .threePointsArcTo([-b, crown], [0, crown + b])\n        .lineTo([-b, high + r])\n        .threePointsArcTo([-b - r, high], [-b - r + r * k, high + r - r * k])\n        .lineTo([-edge + r, high])\n        .threePointsArcTo([-edge, high - r], [-edge + r - r * k, high - r + r * k])\n        .lineTo([-edge, low + r])\n        .threePointsArcTo([-edge + r, low], [-edge + r - r * k, low + r - r * k])\n        .lineTo([-b - r, low])\n        .threePointsArcTo([-b, low - r], [-b - r + r * k, low - r + r * k])\n        .lineTo([-b, bottom + r])\n        .threePointsArcTo([-b + r, bottom], [-b + r - r * k, bottom + r - r * k])\n        .close();\n    return new Assembly({ geometry: outline, color: \"#aad7f2\" });\n}\n"
+          "code": "function run(\n  BodyWidth: number = 220,\n  TotalLength: number = 320,\n  InsertionClearance: number = 50,\n  HandleLength: number = 160,\n  SideProjection: number = 50,\n  CornerRadius: number = 10,\n  ShoulderRadius: number = 30\n): Assembly {\n  const b = BodyWidth/2, r = CornerRadius, s = ShoulderRadius, k = Math.SQRT1_2;\n  const bottom = -TotalLength/2, crown = TotalLength/2-b;\n  const low = bottom+InsertionClearance+s, high = low+HandleLength;\n  const edge = b+SideProjection;\n  const fy = high+s;\n  const dy = fy-crown, distance = b+s;\n  if (Math.abs(dy) >= distance || SideProjection < s+r || BodyWidth <= 2*r) {\n    throw new Error(\"The shoulders do not fit. Reduce their radius or handle length.\");\n  }\n  // R30 concave upper shoulders tangent to the rounded crown.\n  const fx = Math.sqrt(distance*distance-dy*dy);\n  const tx = b*fx/distance, ty = crown+b*dy/distance;\n  if (fx > edge-r || ty >= TotalLength/2) {\n    throw new Error(\"The upper shoulder does not fit inside the current footprint.\");\n  }\n  const angle = Math.atan2(ty-fy,tx-fx);\n  const mid = (-Math.PI/2+angle)/2;\n  const mx = fx+s*Math.cos(mid), my = fy+s*Math.sin(mid);\n  const outline = replicad.draw([-b+r,bottom])\n    .lineTo([b-r,bottom])\n    .threePointsArcTo([b,bottom+r],[b-r+r*k,bottom+r-r*k])\n    .lineTo([b,low-s])\n    .threePointsArcTo([b+s,low],[b+s-s*k,low-s+s*k])\n    .lineTo([edge-r,low])\n    .threePointsArcTo([edge,low+r],[edge-r+r*k,low+r-r*k])\n    .lineTo([edge,high-r])\n    .threePointsArcTo([edge-r,high],[edge-r+r*k,high-r+r*k])\n    .lineTo([fx,high])\n    .threePointsArcTo([tx,ty],[mx,my])\n    .threePointsArcTo([-tx,ty],[0,crown+b])\n    .threePointsArcTo([-fx,high],[-mx,my])\n    .lineTo([-edge+r,high])\n    .threePointsArcTo([-edge,high-r],[-edge+r-r*k,high-r+r*k])\n    .lineTo([-edge,low+r])\n    .threePointsArcTo([-edge+r,low],[-edge+r-r*k,low+r-r*k])\n    .lineTo([-b-s,low])\n    .threePointsArcTo([-b,low-s],[-b-s+s*k,low-s+s*k])\n    .lineTo([-b,bottom+r])\n    .threePointsArcTo([-b+r,bottom],[-b+r-r*k,bottom+r-r*k])\n    .close();\n  return new Assembly({geometry:outline,color:\"#aad7f2\"});\n}",
+          "compiledCode": "\"use strict\";\nfunction run(BodyWidth = 220, TotalLength = 320, InsertionClearance = 50, HandleLength = 160, SideProjection = 50, CornerRadius = 10, ShoulderRadius = 30) {\n    const b = BodyWidth / 2, r = CornerRadius, s = ShoulderRadius, k = Math.SQRT1_2;\n    const bottom = -TotalLength / 2, crown = TotalLength / 2 - b;\n    const low = bottom + InsertionClearance + s, high = low + HandleLength;\n    const edge = b + SideProjection;\n    const fy = high + s;\n    const dy = fy - crown, distance = b + s;\n    if (Math.abs(dy) >= distance || SideProjection < s + r || BodyWidth <= 2 * r) {\n        throw new Error(\"The shoulders do not fit. Reduce their radius or handle length.\");\n    }\n    // R30 concave upper shoulders tangent to the rounded crown.\n    const fx = Math.sqrt(distance * distance - dy * dy);\n    const tx = b * fx / distance, ty = crown + b * dy / distance;\n    if (fx > edge - r || ty >= TotalLength / 2) {\n        throw new Error(\"The upper shoulder does not fit inside the current footprint.\");\n    }\n    const angle = Math.atan2(ty - fy, tx - fx);\n    const mid = (-Math.PI / 2 + angle) / 2;\n    const mx = fx + s * Math.cos(mid), my = fy + s * Math.sin(mid);\n    const outline = replicad.draw([-b + r, bottom])\n        .lineTo([b - r, bottom])\n        .threePointsArcTo([b, bottom + r], [b - r + r * k, bottom + r - r * k])\n        .lineTo([b, low - s])\n        .threePointsArcTo([b + s, low], [b + s - s * k, low - s + s * k])\n        .lineTo([edge - r, low])\n        .threePointsArcTo([edge, low + r], [edge - r + r * k, low + r - r * k])\n        .lineTo([edge, high - r])\n        .threePointsArcTo([edge - r, high], [edge - r + r * k, high - r + r * k])\n        .lineTo([fx, high])\n        .threePointsArcTo([tx, ty], [mx, my])\n        .threePointsArcTo([-tx, ty], [0, crown + b])\n        .threePointsArcTo([-fx, high], [-mx, my])\n        .lineTo([-edge + r, high])\n        .threePointsArcTo([-edge, high - r], [-edge + r - r * k, high - r + r * k])\n        .lineTo([-edge, low + r])\n        .threePointsArcTo([-edge + r, low], [-edge + r - r * k, low + r - r * k])\n        .lineTo([-b - s, low])\n        .threePointsArcTo([-b, low - s], [-b - s + s * k, low - s + s * k])\n        .lineTo([-b, bottom + r])\n        .threePointsArcTo([-b + r, bottom], [-b + r - r * k, bottom + r - r * k])\n        .close();\n    return new Assembly({ geometry: outline, color: \"#aad7f2\" });\n}\n"
         },
         {
           "atomType": "GitHubMolecule",
@@ -188,11 +193,11 @@
             },
             {
               "name": "xDist",
-              "ioValue": -130
+              "ioValue": -110
             },
             {
               "name": "yDist",
-              "ioValue": -40
+              "ioValue": 0
             },
             {
               "name": "zDist",
@@ -212,11 +217,11 @@
             },
             {
               "name": "xDist",
-              "ioValue": 130
+              "ioValue": 110
             },
             {
               "name": "yDist",
-              "ioValue": -40
+              "ioValue": 0
             },
             {
               "name": "zDist",
