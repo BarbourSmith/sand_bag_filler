@@ -28,8 +28,8 @@
         },
         {
           "atomType": "Code",
-          "x": 0.1484,
-          "y": 0.3038,
+          "x": 0.1474,
+          "y": 0.317,
           "uniqueID": "id-143",
           "ioValues": [
             {
@@ -68,8 +68,8 @@
         },
         {
           "atomType": "GitHubMolecule",
-          "x": 0.1688,
-          "y": 0.6962,
+          "x": 0.162,
+          "y": 0.6945,
           "uniqueID": "id-164",
           "name": "Rounded_Rectangle",
           "ioValues": [
