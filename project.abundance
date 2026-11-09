@@ -7,81 +7,294 @@
   "topLevel": true,
   "allAtoms": [
     {
-      "atomType": "Move",
-      "x": 0.3628,
-      "y": 0.6916,
-      "uniqueID": "id-119",
-      "ioValues": [
+      "atomType": "Molecule",
+      "x": 0.4,
+      "y": 0.4,
+      "uniqueID": "id-139",
+      "name": "Handled Outline",
+      "topLevel": false,
+      "allAtoms": [
         {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
+          "atomType": "Output",
+          "x": 0.98,
+          "y": 0.5,
+          "uniqueID": "id-141",
+          "ioValues": [
+            {
+              "name": "number or geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ]
         },
         {
-          "name": "xDist",
-          "ioValue": 0
+          "atomType": "Code",
+          "x": 0.15,
+          "y": 0.3,
+          "uniqueID": "id-143",
+          "ioValues": [
+            {
+              "name": "BodyWidth",
+              "ioValue": 220
+            },
+            {
+              "name": "TotalLength",
+              "ioValue": 320
+            },
+            {
+              "name": "InsertionClearance",
+              "ioValue": 50
+            },
+            {
+              "name": "HandleLength",
+              "ioValue": 120
+            },
+            {
+              "name": "SideProjection",
+              "ioValue": 50
+            },
+            {
+              "name": "CornerRadius",
+              "ioValue": 10
+            }
+          ],
+          "interpreterVersion": 1,
+          "code": "function run(\n  BodyWidth: number = 220,\n  TotalLength: number = 320,\n  InsertionClearance: number = 50,\n  HandleLength: number = 120,\n  SideProjection: number = 50,\n  CornerRadius: number = 10\n): Assembly {\n  const b = BodyWidth/2, r = CornerRadius, k = Math.SQRT1_2;\n  const bottom = -TotalLength/2, crown = TotalLength/2-b;\n  const low = bottom+InsertionClearance+r, high = low+HandleLength;\n  const edge = b+SideProjection;\n  if (high+r >= crown || SideProjection < 2*r || BodyWidth <= 2*r) {\n    throw new Error(\"Increase length or reduce handle size so the rounded shoulders fit below the crown.\");\n  }\n  const outline = replicad.draw([-b+r,bottom])\n    .lineTo([b-r,bottom])\n    .threePointsArcTo([b,bottom+r],[b-r+r*k,bottom+r-r*k])\n    .lineTo([b,low-r])\n    .threePointsArcTo([b+r,low],[b+r-r*k,low-r+r*k])\n    .lineTo([edge-r,low])\n    .threePointsArcTo([edge,low+r],[edge-r+r*k,low+r-r*k])\n    .lineTo([edge,high-r])\n    .threePointsArcTo([edge-r,high],[edge-r+r*k,high-r+r*k])\n    .lineTo([b+r,high])\n    .threePointsArcTo([b,high+r],[b+r-r*k,high+r-r*k])\n    .lineTo([b,crown])\n    .threePointsArcTo([-b,crown],[0,crown+b])\n    .lineTo([-b,high+r])\n    .threePointsArcTo([-b-r,high],[-b-r+r*k,high+r-r*k])\n    .lineTo([-edge+r,high])\n    .threePointsArcTo([-edge,high-r],[-edge+r-r*k,high-r+r*k])\n    .lineTo([-edge,low+r])\n    .threePointsArcTo([-edge+r,low],[-edge+r-r*k,low+r-r*k])\n    .lineTo([-b-r,low])\n    .threePointsArcTo([-b,low-r],[-b-r+r*k,low-r+r*k])\n    .lineTo([-b,bottom+r])\n    .threePointsArcTo([-b+r,bottom],[-b+r-r*k,bottom+r-r*k])\n    .close();\n  return new Assembly({geometry:outline,color:\"#aad7f2\"});\n}",
+          "compiledCode": "\"use strict\";\nfunction run(BodyWidth = 220, TotalLength = 320, InsertionClearance = 50, HandleLength = 120, SideProjection = 50, CornerRadius = 10) {\n    const b = BodyWidth / 2, r = CornerRadius, k = Math.SQRT1_2;\n    const bottom = -TotalLength / 2, crown = TotalLength / 2 - b;\n    const low = bottom + InsertionClearance + r, high = low + HandleLength;\n    const edge = b + SideProjection;\n    if (high + r >= crown || SideProjection < 2 * r || BodyWidth <= 2 * r) {\n        throw new Error(\"Increase length or reduce handle size so the rounded shoulders fit below the crown.\");\n    }\n    const outline = replicad.draw([-b + r, bottom])\n        .lineTo([b - r, bottom])\n        .threePointsArcTo([b, bottom + r], [b - r + r * k, bottom + r - r * k])\n        .lineTo([b, low - r])\n        .threePointsArcTo([b + r, low], [b + r - r * k, low - r + r * k])\n        .lineTo([edge - r, low])\n        .threePointsArcTo([edge, low + r], [edge - r + r * k, low + r - r * k])\n        .lineTo([edge, high - r])\n        .threePointsArcTo([edge - r, high], [edge - r + r * k, high - r + r * k])\n        .lineTo([b + r, high])\n        .threePointsArcTo([b, high + r], [b + r - r * k, high + r - r * k])\n        .lineTo([b, crown])\n        .threePointsArcTo([-b, crown], [0, crown + b])\n        .lineTo([-b, high + r])\n        .threePointsArcTo([-b - r, high], [-b - r + r * k, high + r - r * k])\n        .lineTo([-edge + r, high])\n        .threePointsArcTo([-edge, high - r], [-edge + r - r * k, high - r + r * k])\n        .lineTo([-edge, low + r])\n        .threePointsArcTo([-edge + r, low], [-edge + r - r * k, low + r - r * k])\n        .lineTo([-b - r, low])\n        .threePointsArcTo([-b, low - r], [-b - r + r * k, low - r + r * k])\n        .lineTo([-b, bottom + r])\n        .threePointsArcTo([-b + r, bottom], [-b + r - r * k, bottom + r - r * k])\n        .close();\n    return new Assembly({ geometry: outline, color: \"#aad7f2\" });\n}\n"
         },
         {
-          "name": "yDist",
-          "ioValue": -65
+          "atomType": "GitHubMolecule",
+          "x": 0.15,
+          "y": 0.7,
+          "uniqueID": "id-164",
+          "name": "Rounded_Rectangle",
+          "ioValues": [
+            {
+              "name": "X_Length",
+              "ioValue": 40
+            },
+            {
+              "name": "Y_Length",
+              "ioValue": 100
+            },
+            {
+              "name": "Radius",
+              "ioValue": 10
+            }
+          ],
+          "topLevel": false,
+          "allAtoms": [
+            {
+              "atomType": "Output",
+              "x": 0.98,
+              "y": 0.5,
+              "uniqueID": "id-159",
+              "ioValues": [
+                {
+                  "name": "number or geometry",
+                  "ioValue": "__GEOMETRY_INPUT__"
+                }
+              ]
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.1538,
+              "uniqueID": "id-160",
+              "name": "X_Length",
+              "options": []
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.2462,
+              "uniqueID": "id-161",
+              "name": "Y_Length",
+              "options": []
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.3385,
+              "uniqueID": "id-162",
+              "name": "Radius",
+              "options": []
+            },
+            {
+              "atomType": "Code",
+              "x": 0.496,
+              "y": 0.6379,
+              "uniqueID": "id-163",
+              "ioValues": [
+                {
+                  "name": "width",
+                  "ioValue": 40
+                },
+                {
+                  "name": "height",
+                  "ioValue": 100
+                },
+                {
+                  "name": "cornerRadius",
+                  "ioValue": 10
+                }
+              ],
+              "interpreterVersion": 1,
+              "code": "function run(\n  width: number = 40,\n  height: number = 30,\n  cornerRadius: number = 5,\n): Assembly {\n  // Create a 2D rounded rectangle sketch\n  const roundedRect = replicad.drawRoundedRectangle(width, height, cornerRadius);\n\n  return new Assembly({\n    geometry: roundedRect,\n    tags: [\"rounded-rectangle\", \"2d\"],\n    bom: [`Rounded rectangle ${width}×${height} mm, r=${cornerRadius} mm`],\n  });\n}",
+              "compiledCode": "\"use strict\";\nfunction run(width = 40, height = 30, cornerRadius = 5) {\n    // Create a 2D rounded rectangle sketch\n    const roundedRect = replicad.drawRoundedRectangle(width, height, cornerRadius);\n    return new Assembly({\n        geometry: roundedRect,\n        tags: [\"rounded-rectangle\", \"2d\"],\n        bom: [`Rounded rectangle ${width}×${height} mm, r=${cornerRadius} mm`],\n    });\n}\n"
+            }
+          ],
+          "allConnectors": [
+            {
+              "ap2Name": "width",
+              "ap1ID": "id-160",
+              "ap2ID": "id-163"
+            },
+            {
+              "ap2Name": "height",
+              "ap1ID": "id-161",
+              "ap2ID": "id-163"
+            },
+            {
+              "ap2Name": "cornerRadius",
+              "ap1ID": "id-162",
+              "ap2ID": "id-163"
+            },
+            {
+              "ap2Name": "number or geometry",
+              "ap1ID": "id-163",
+              "ap2ID": "id-159"
+            }
+          ],
+          "parentRepo": {
+            "owner": "BarbourSmith",
+            "repoName": "Rounded_Rectangle",
+            "privateRepo": false,
+            "dateModified": "2026-06-24T22:04:58Z"
+          },
+          "unitsKey": "Unitless",
+          "fileTypeVersion": 1,
+          "scaleToProjectUnits": true,
+          "lastReloadedFromGithubAt": 1794250172418
         },
         {
-          "name": "zDist",
-          "ioValue": 0
-        }
-      ]
-    },
-    {
-      "atomType": "Circle",
-      "x": 0.19,
-      "y": 0.32,
-      "uniqueID": "id-125",
-      "ioValues": [
-        {
-          "name": "diameter",
-          "ioValue": 260
-        }
-      ]
-    },
-    {
-      "atomType": "Move",
-      "x": 0.36,
-      "y": 0.32,
-      "uniqueID": "id-128",
-      "ioValues": [
-        {
-          "name": "geometry",
-          "ioValue": "__GEOMETRY_INPUT__"
+          "atomType": "Move",
+          "x": 0.36,
+          "y": 0.64,
+          "uniqueID": "id-179",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "xDist",
+              "ioValue": -130
+            },
+            {
+              "name": "yDist",
+              "ioValue": -40
+            },
+            {
+              "name": "zDist",
+              "ioValue": 0
+            }
+          ]
         },
         {
-          "name": "xDist",
-          "ioValue": 0
+          "atomType": "Move",
+          "x": 0.36,
+          "y": 0.84,
+          "uniqueID": "id-185",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "xDist",
+              "ioValue": 130
+            },
+            {
+              "name": "yDist",
+              "ioValue": -40
+            },
+            {
+              "name": "zDist",
+              "ioValue": 0
+            }
+          ]
         },
         {
-          "name": "yDist",
-          "ioValue": 30
+          "atomType": "Difference",
+          "x": 0.56,
+          "y": 0.35,
+          "uniqueID": "id-191",
+          "ioValues": [
+            {
+              "name": "retain",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "remove",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ]
         },
         {
-          "name": "zDist",
-          "ioValue": 0
-        }
-      ]
-    },
-    {
-      "atomType": "Fusion",
-      "x": 0.54,
-      "y": 0.45,
-      "uniqueID": "id-134",
-      "ioValues": [
-        {
-          "name": "Shape 1",
-          "ioValue": "__GEOMETRY_INPUT__"
-        },
-        {
-          "name": "Shape2",
-          "ioValue": "__GEOMETRY_INPUT__"
+          "atomType": "Difference",
+          "x": 0.75,
+          "y": 0.35,
+          "uniqueID": "id-195",
+          "ioValues": [
+            {
+              "name": "retain",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "remove",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ]
         }
       ],
-      "unionType": "Fusion"
+      "allConnectors": [
+        {
+          "ap2Name": "retain",
+          "ap1ID": "id-143",
+          "ap2ID": "id-191"
+        },
+        {
+          "ap2Name": "geometry",
+          "ap1ID": "id-164",
+          "ap2ID": "id-179"
+        },
+        {
+          "ap2Name": "geometry",
+          "ap1ID": "id-164",
+          "ap2ID": "id-185"
+        },
+        {
+          "ap2Name": "remove",
+          "ap1ID": "id-179",
+          "ap2ID": "id-191"
+        },
+        {
+          "ap2Name": "remove",
+          "ap1ID": "id-185",
+          "ap2ID": "id-195"
+        },
+        {
+          "ap2Name": "retain",
+          "ap1ID": "id-191",
+          "ap2ID": "id-195"
+        },
+        {
+          "ap2Name": "number or geometry",
+          "ap1ID": "id-195",
+          "ap2ID": "id-141"
+        }
+      ],
+      "fileTypeVersion": 1
     },
     {
       "atomType": "Output",
@@ -92,23 +305,6 @@
         {
           "name": "number or geometry",
           "ioValue": "__GEOMETRY_INPUT__"
-        }
-      ]
-    },
-    {
-      "atomType": "Rectangle",
-      "x": 0.1901,
-      "y": 0.6801,
-      "uniqueID": "id-4",
-      "ioValues": [
-        {
-          "name": "x length",
-          "ioValue": 260,
-          "currentEquation": "260"
-        },
-        {
-          "name": "y length",
-          "ioValue": 190
         }
       ]
     },
@@ -132,29 +328,9 @@
   ],
   "allConnectors": [
     {
-      "ap2Name": "Shape 1",
-      "ap1ID": "id-119",
-      "ap2ID": "id-134"
-    },
-    {
       "ap2Name": "geometry",
-      "ap1ID": "id-125",
-      "ap2ID": "id-128"
-    },
-    {
-      "ap2Name": "Shape2",
-      "ap1ID": "id-128",
-      "ap2ID": "id-134"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-134",
+      "ap1ID": "id-139",
       "ap2ID": "id-8"
-    },
-    {
-      "ap2Name": "geometry",
-      "ap1ID": "id-4",
-      "ap2ID": "id-119"
     },
     {
       "ap2Name": "number or geometry",
