@@ -8,8 +8,8 @@
   "allAtoms": [
     {
       "atomType": "Molecule",
-      "x": 0.5092,
-      "y": 0.5995,
+      "x": 0.4325,
+      "y": 0.5538,
       "uniqueID": "id-139",
       "name": "Handled Outline",
       "topLevel": false,
@@ -303,8 +303,8 @@
     },
     {
       "atomType": "Output",
-      "x": 0.7725,
-      "y": 0.5887,
+      "x": 0.6713,
+      "y": 0.543,
       "uniqueID": "id-2",
       "ioValues": [
         {
@@ -315,8 +315,8 @@
     },
     {
       "atomType": "Export",
-      "x": 0.7808,
-      "y": 0.7896,
+      "x": 0.6872,
+      "y": 0.7849,
       "uniqueID": "id-200",
       "ioValues": [
         {
@@ -348,14 +348,8 @@
       "partName": "sand_bag_filler"
     },
     {
-      "atomType": "Box",
-      "x": 0.369,
-      "y": 0.5161,
-      "uniqueID": "id-214"
-    },
-    {
       "atomType": "Extrude",
-      "x": 0.6411,
+      "x": 0.5562,
       "y": 0.5887,
       "uniqueID": "id-8",
       "ioValues": [
