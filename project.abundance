@@ -28,8 +28,8 @@
         },
         {
           "atomType": "Code",
-          "x": 0.15,
-          "y": 0.3,
+          "x": 0.1484,
+          "y": 0.3038,
           "uniqueID": "id-143",
           "ioValues": [
             {
@@ -303,8 +303,8 @@
     },
     {
       "atomType": "Output",
-      "x": 0.7624,
-      "y": 0.578,
+      "x": 0.774,
+      "y": 0.5677,
       "uniqueID": "id-2",
       "ioValues": [
         {
@@ -314,9 +314,43 @@
       ]
     },
     {
+      "atomType": "Export",
+      "x": 0.7808,
+      "y": 0.7896,
+      "uniqueID": "id-200",
+      "ioValues": [
+        {
+          "name": "geometry",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "File Type",
+          "ioValue": "STEP",
+          "currentEquation": "STEP"
+        },
+        {
+          "name": "Resolution (dpi)",
+          "ioValue": 96
+        },
+        {
+          "name": "STL Tolerance",
+          "ioValue": 0.05
+        },
+        {
+          "name": "Part Name",
+          "ioValue": "sand_bag_filler",
+          "currentEquation": "sand_bag_filler"
+        }
+      ],
+      "type": null,
+      "resolution": 96,
+      "importIndex": 0,
+      "partName": "sand_bag_filler"
+    },
+    {
       "atomType": "Extrude",
-      "x": 0.6392,
-      "y": 0.5806,
+      "x": 0.6411,
+      "y": 0.5887,
       "uniqueID": "id-8",
       "ioValues": [
         {
@@ -341,6 +375,11 @@
       "ap2Name": "number or geometry",
       "ap1ID": "id-8",
       "ap2ID": "id-2"
+    },
+    {
+      "ap2Name": "geometry",
+      "ap1ID": "id-8",
+      "ap2ID": "id-200"
     }
   ],
   "unitsKey": "MM",
