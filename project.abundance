@@ -16,8 +16,8 @@
       "allAtoms": [
         {
           "atomType": "Output",
-          "x": 0.98,
-          "y": 0.5,
+          "x": 0.9709,
+          "y": 0.5027,
           "uniqueID": "id-141",
           "ioValues": [
             {
@@ -303,8 +303,8 @@
     },
     {
       "atomType": "Output",
-      "x": 0.774,
-      "y": 0.5677,
+      "x": 0.7725,
+      "y": 0.5887,
       "uniqueID": "id-2",
       "ioValues": [
         {
@@ -346,6 +346,12 @@
       "resolution": 96,
       "importIndex": 0,
       "partName": "sand_bag_filler"
+    },
+    {
+      "atomType": "Box",
+      "x": 0.369,
+      "y": 0.5161,
+      "uniqueID": "id-214"
     },
     {
       "atomType": "Extrude",
