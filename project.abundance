@@ -28,8 +28,8 @@
         },
         {
           "atomType": "Code",
-          "x": 0.6852,
-          "y": 0.9352,
+          "x": 0.6362,
+          "y": 0.831,
           "uniqueID": "id-143",
           "ioValues": [
             {
@@ -54,7 +54,8 @@
             },
             {
               "name": "CornerRadius",
-              "ioValue": 10
+              "ioValue": 10,
+              "currentEquation": "10"
             },
             {
               "name": "ShoulderRadius",
@@ -690,8 +691,8 @@
     },
     {
       "atomType": "GitHubMolecule",
-      "x": 0.4239,
-      "y": 0.569,
+      "x": 0.5569,
+      "y": 0.1944,
       "uniqueID": "id-339",
       "name": "selected.Fillet",
       "ioValues": [
@@ -701,7 +702,8 @@
         },
         {
           "name": "radius",
-          "ioValue": 1
+          "ioValue": 30,
+          "currentEquation": "30"
         }
       ],
       "topLevel": false,
@@ -730,7 +732,7 @@
             },
             {
               "name": "radius",
-              "ioValue": 1
+              "ioValue": 30
             }
           ],
           "interpreterVersion": 1,
@@ -1019,12 +1021,12 @@
     },
     {
       "ap2Name": "number or geometry",
-      "ap1ID": "id-8",
+      "ap1ID": "id-339",
       "ap2ID": "id-2"
     },
     {
       "ap2Name": "geometry",
-      "ap1ID": "id-8",
+      "ap1ID": "id-339",
       "ap2ID": "id-200"
     },
     {
