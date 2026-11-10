@@ -8,8 +8,8 @@
   "allAtoms": [
     {
       "atomType": "Molecule",
-      "x": 0.4325,
-      "y": 0.5538,
+      "x": 0.0807,
+      "y": 0.3465,
       "uniqueID": "id-139",
       "name": "Handled Outline",
       "topLevel": false,
@@ -28,8 +28,8 @@
         },
         {
           "atomType": "Code",
-          "x": 0.1474,
-          "y": 0.317,
+          "x": 0.6852,
+          "y": 0.9352,
           "uniqueID": "id-143",
           "ioValues": [
             {
@@ -58,8 +58,7 @@
             },
             {
               "name": "ShoulderRadius",
-              "ioValue": 30,
-              "currentEquation": "30"
+              "ioValue": 30
             }
           ],
           "interpreterVersion": 1,
@@ -260,14 +259,326 @@
               "ioValue": "__GEOMETRY_INPUT__"
             }
           ]
+        },
+        {
+          "atomType": "GitHubMolecule",
+          "x": 0.1138,
+          "y": 0.2563,
+          "uniqueID": "id-254",
+          "name": "Rounded_Rectangle",
+          "ioValues": [
+            {
+              "name": "X_Length",
+              "ioValue": 320,
+              "currentEquation": "320"
+            },
+            {
+              "name": "Y_Length",
+              "ioValue": 159,
+              "currentEquation": "159"
+            },
+            {
+              "name": "Radius",
+              "ioValue": 10
+            }
+          ],
+          "topLevel": false,
+          "allAtoms": [
+            {
+              "atomType": "Output",
+              "x": 0.98,
+              "y": 0.5,
+              "uniqueID": "id-255",
+              "ioValues": [
+                {
+                  "name": "number or geometry",
+                  "ioValue": "__GEOMETRY_INPUT__"
+                }
+              ]
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.1538,
+              "uniqueID": "id-256",
+              "name": "X_Length",
+              "options": []
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.2462,
+              "uniqueID": "id-257",
+              "name": "Y_Length",
+              "options": []
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.3385,
+              "uniqueID": "id-258",
+              "name": "Radius",
+              "options": []
+            },
+            {
+              "atomType": "Code",
+              "x": 0.496,
+              "y": 0.6379,
+              "uniqueID": "id-259",
+              "ioValues": [
+                {
+                  "name": "width",
+                  "ioValue": 320
+                },
+                {
+                  "name": "height",
+                  "ioValue": 159
+                },
+                {
+                  "name": "cornerRadius",
+                  "ioValue": 10
+                }
+              ],
+              "interpreterVersion": 1,
+              "code": "function run(\n  width: number = 40,\n  height: number = 30,\n  cornerRadius: number = 5,\n): Assembly {\n  // Create a 2D rounded rectangle sketch\n  const roundedRect = replicad.drawRoundedRectangle(width, height, cornerRadius);\n\n  return new Assembly({\n    geometry: roundedRect,\n    tags: [\"rounded-rectangle\", \"2d\"],\n    bom: [`Rounded rectangle ${width}×${height} mm, r=${cornerRadius} mm`],\n  });\n}",
+              "compiledCode": "\"use strict\";\nfunction run(width = 40, height = 30, cornerRadius = 5) {\n    // Create a 2D rounded rectangle sketch\n    const roundedRect = replicad.drawRoundedRectangle(width, height, cornerRadius);\n    return new Assembly({\n        geometry: roundedRect,\n        tags: [\"rounded-rectangle\", \"2d\"],\n        bom: [`Rounded rectangle ${width}×${height} mm, r=${cornerRadius} mm`],\n    });\n}\n"
+            }
+          ],
+          "allConnectors": [
+            {
+              "ap2Name": "width",
+              "ap1ID": "id-256",
+              "ap2ID": "id-259"
+            },
+            {
+              "ap2Name": "height",
+              "ap1ID": "id-257",
+              "ap2ID": "id-259"
+            },
+            {
+              "ap2Name": "cornerRadius",
+              "ap1ID": "id-258",
+              "ap2ID": "id-259"
+            },
+            {
+              "ap2Name": "number or geometry",
+              "ap1ID": "id-259",
+              "ap2ID": "id-255"
+            }
+          ],
+          "parentRepo": {
+            "owner": "BarbourSmith",
+            "repoName": "Rounded_Rectangle",
+            "privateRepo": false,
+            "dateModified": "2026-06-24T22:04:58Z"
+          },
+          "unitsKey": "Unitless",
+          "fileTypeVersion": 1,
+          "scaleToProjectUnits": true,
+          "lastReloadedFromGithubAt": 1794250172418
+        },
+        {
+          "atomType": "Fusion",
+          "x": 0.4517,
+          "y": 0.3183,
+          "uniqueID": "id-274",
+          "ioValues": [
+            {
+              "name": "Shape 1",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "Shape2",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "Shape3",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ],
+          "unionType": "Fusion"
+        },
+        {
+          "atomType": "GitHubMolecule",
+          "x": 0.1184,
+          "y": 0.4507,
+          "uniqueID": "id-278",
+          "name": "Rounded_Rectangle",
+          "ioValues": [
+            {
+              "name": "X_Length",
+              "ioValue": 221,
+              "currentEquation": "221"
+            },
+            {
+              "name": "Y_Length",
+              "ioValue": 230,
+              "currentEquation": "230"
+            },
+            {
+              "name": "Radius",
+              "ioValue": 10
+            }
+          ],
+          "topLevel": false,
+          "allAtoms": [
+            {
+              "atomType": "Output",
+              "x": 0.98,
+              "y": 0.5,
+              "uniqueID": "id-279",
+              "ioValues": [
+                {
+                  "name": "number or geometry",
+                  "ioValue": "__GEOMETRY_INPUT__"
+                }
+              ]
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.1538,
+              "uniqueID": "id-280",
+              "name": "X_Length",
+              "options": []
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.2462,
+              "uniqueID": "id-281",
+              "name": "Y_Length",
+              "options": []
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.3385,
+              "uniqueID": "id-282",
+              "name": "Radius",
+              "options": []
+            },
+            {
+              "atomType": "Code",
+              "x": 0.496,
+              "y": 0.6379,
+              "uniqueID": "id-283",
+              "ioValues": [
+                {
+                  "name": "width",
+                  "ioValue": 221
+                },
+                {
+                  "name": "height",
+                  "ioValue": 230
+                },
+                {
+                  "name": "cornerRadius",
+                  "ioValue": 10
+                }
+              ],
+              "interpreterVersion": 1,
+              "code": "function run(\n  width: number = 40,\n  height: number = 30,\n  cornerRadius: number = 5,\n): Assembly {\n  // Create a 2D rounded rectangle sketch\n  const roundedRect = replicad.drawRoundedRectangle(width, height, cornerRadius);\n\n  return new Assembly({\n    geometry: roundedRect,\n    tags: [\"rounded-rectangle\", \"2d\"],\n    bom: [`Rounded rectangle ${width}×${height} mm, r=${cornerRadius} mm`],\n  });\n}",
+              "compiledCode": "\"use strict\";\nfunction run(width = 40, height = 30, cornerRadius = 5) {\n    // Create a 2D rounded rectangle sketch\n    const roundedRect = replicad.drawRoundedRectangle(width, height, cornerRadius);\n    return new Assembly({\n        geometry: roundedRect,\n        tags: [\"rounded-rectangle\", \"2d\"],\n        bom: [`Rounded rectangle ${width}×${height} mm, r=${cornerRadius} mm`],\n    });\n}\n"
+            }
+          ],
+          "allConnectors": [
+            {
+              "ap2Name": "width",
+              "ap1ID": "id-280",
+              "ap2ID": "id-283"
+            },
+            {
+              "ap2Name": "height",
+              "ap1ID": "id-281",
+              "ap2ID": "id-283"
+            },
+            {
+              "ap2Name": "cornerRadius",
+              "ap1ID": "id-282",
+              "ap2ID": "id-283"
+            },
+            {
+              "ap2Name": "number or geometry",
+              "ap1ID": "id-283",
+              "ap2ID": "id-279"
+            }
+          ],
+          "parentRepo": {
+            "owner": "BarbourSmith",
+            "repoName": "Rounded_Rectangle",
+            "privateRepo": false,
+            "dateModified": "2026-06-24T22:04:58Z"
+          },
+          "unitsKey": "Unitless",
+          "fileTypeVersion": 1,
+          "scaleToProjectUnits": true,
+          "lastReloadedFromGithubAt": 1794250172418
+        },
+        {
+          "atomType": "Move",
+          "x": 0.2831,
+          "y": 0.4141,
+          "uniqueID": "id-298",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "xDist",
+              "ioValue": 0
+            },
+            {
+              "name": "yDist",
+              "ioValue": -45,
+              "currentEquation": "-45"
+            },
+            {
+              "name": "zDist",
+              "ioValue": 0
+            }
+          ]
+        },
+        {
+          "atomType": "Circle",
+          "x": 0.2566,
+          "y": 0.1606,
+          "uniqueID": "id-305",
+          "ioValues": [
+            {
+              "name": "diameter",
+              "ioValue": 220,
+              "currentEquation": "220"
+            }
+          ]
+        },
+        {
+          "atomType": "Move",
+          "x": 0.3697,
+          "y": 0.2085,
+          "uniqueID": "id-308",
+          "ioValues": [
+            {
+              "name": "geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "xDist",
+              "ioValue": 0
+            },
+            {
+              "name": "yDist",
+              "ioValue": 50
+            },
+            {
+              "name": "zDist",
+              "ioValue": 0
+            }
+          ]
         }
       ],
       "allConnectors": [
-        {
-          "ap2Name": "retain",
-          "ap1ID": "id-143",
-          "ap2ID": "id-191"
-        },
         {
           "ap2Name": "geometry",
           "ap1ID": "id-164",
@@ -297,14 +608,44 @@
           "ap2Name": "number or geometry",
           "ap1ID": "id-195",
           "ap2ID": "id-141"
+        },
+        {
+          "ap2Name": "Shape 1",
+          "ap1ID": "id-254",
+          "ap2ID": "id-274"
+        },
+        {
+          "ap2Name": "retain",
+          "ap1ID": "id-274",
+          "ap2ID": "id-191"
+        },
+        {
+          "ap2Name": "geometry",
+          "ap1ID": "id-278",
+          "ap2ID": "id-298"
+        },
+        {
+          "ap2Name": "Shape2",
+          "ap1ID": "id-298",
+          "ap2ID": "id-274"
+        },
+        {
+          "ap2Name": "geometry",
+          "ap1ID": "id-305",
+          "ap2ID": "id-308"
+        },
+        {
+          "ap2Name": "Shape3",
+          "ap1ID": "id-308",
+          "ap2ID": "id-274"
         }
       ],
       "fileTypeVersion": 1
     },
     {
       "atomType": "Output",
-      "x": 0.6713,
-      "y": 0.543,
+      "x": 0.9769,
+      "y": 0.3408,
       "uniqueID": "id-2",
       "ioValues": [
         {
@@ -315,8 +656,8 @@
     },
     {
       "atomType": "Export",
-      "x": 0.6872,
-      "y": 0.7849,
+      "x": 0.6164,
+      "y": 0.7521,
       "uniqueID": "id-200",
       "ioValues": [
         {
@@ -348,9 +689,315 @@
       "partName": "sand_bag_filler"
     },
     {
+      "atomType": "GitHubMolecule",
+      "x": 0.4239,
+      "y": 0.569,
+      "uniqueID": "id-339",
+      "name": "selected.Fillet",
+      "ioValues": [
+        {
+          "name": "shape",
+          "ioValue": "__GEOMETRY_INPUT__"
+        },
+        {
+          "name": "radius",
+          "ioValue": 1
+        }
+      ],
+      "topLevel": false,
+      "allAtoms": [
+        {
+          "atomType": "Output",
+          "x": 1,
+          "y": 0.5,
+          "uniqueID": "id-328",
+          "ioValues": [
+            {
+              "name": "number or geometry",
+              "ioValue": "__GEOMETRY_INPUT__"
+            }
+          ]
+        },
+        {
+          "atomType": "Code",
+          "x": 0.3,
+          "y": 0.6,
+          "uniqueID": "id-329",
+          "ioValues": [
+            {
+              "name": "toFillet",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "radius",
+              "ioValue": 1
+            }
+          ],
+          "interpreterVersion": 1,
+          "code": "function run(toFillet: Assembly, radius: number) {\n  return toFillet.onLeafs((leaf) => {\n    if (leaf.geometry instanceof replicad.Drawing || !replicad.isShape3D(leaf.geometry)) {\n      return leaf;\n    }\n    if (leaf.selection?.part) {\n      leaf.geometry = leaf.geometry.fillet(radius)\n      return leaf;\n    }\n    // else apply only to filtered faces and edges\n    let edgesToFillet: replicad.Edge[] = []\n    if (leaf.selection?.faces) {\n      leaf.selection.faces.forEach((faceIndex) => {\n        edgesToFillet.push(...leaf.geometry.faces[faceIndex].edges)\n      });\n    }\n    console.log(edgesToFillet)\n    console.log(\"intermediate\")\n    console.log(leaf.selection)\n    if (leaf.selection?.edges) {\n      edgesToFillet.push(...leaf.selection.edges.map((index) => leaf.geometry.edges[index]))\n    }\n    if (edgesToFillet.length == 0) {\n      return leaf;\n    }\n    edgesToFillet = edgesToFillet.filter((e) => e != null)\n    if (edgesToFillet.length == 0) {\n      return leaf.geometry\n    }\n    console.log(edgesToFillet)\n    leaf.geometry = leaf.geometry.fillet(radius, (e) => { return e.inList(edgesToFillet.map((e) => e.clone())) })\n    return leaf;\n  })\n}",
+          "compiledCode": "\"use strict\";\nfunction run(toFillet, radius) {\n    return toFillet.onLeafs((leaf) => {\n        if (leaf.geometry instanceof replicad.Drawing || !replicad.isShape3D(leaf.geometry)) {\n            return leaf;\n        }\n        if (leaf.selection?.part) {\n            leaf.geometry = leaf.geometry.fillet(radius);\n            return leaf;\n        }\n        // else apply only to filtered faces and edges\n        let edgesToFillet = [];\n        if (leaf.selection?.faces) {\n            leaf.selection.faces.forEach((faceIndex) => {\n                edgesToFillet.push(...leaf.geometry.faces[faceIndex].edges);\n            });\n        }\n        console.log(edgesToFillet);\n        console.log(\"intermediate\");\n        console.log(leaf.selection);\n        if (leaf.selection?.edges) {\n            edgesToFillet.push(...leaf.selection.edges.map((index) => leaf.geometry.edges[index]));\n        }\n        if (edgesToFillet.length == 0) {\n            return leaf;\n        }\n        edgesToFillet = edgesToFillet.filter((e) => e != null);\n        if (edgesToFillet.length == 0) {\n            return leaf.geometry;\n        }\n        console.log(edgesToFillet);\n        leaf.geometry = leaf.geometry.fillet(radius, (e) => { return e.inList(edgesToFillet.map((e) => e.clone())); });\n        return leaf;\n    });\n}\n"
+        },
+        {
+          "atomType": "Input",
+          "x": 0.0254,
+          "y": 0.1538,
+          "uniqueID": "id-330",
+          "name": "shape",
+          "type": "edgeselect",
+          "options": [],
+          "selectedEdgeData": {
+            "0": [
+              43,
+              28,
+              13,
+              0
+            ]
+          }
+        },
+        {
+          "atomType": "Input",
+          "x": 0.0254,
+          "y": 0.2462,
+          "uniqueID": "id-331",
+          "name": "radius",
+          "options": []
+        },
+        {
+          "atomType": "GitHubMolecule",
+          "x": 0.5,
+          "y": 0.5,
+          "uniqueID": "id-332",
+          "name": "select.Clear",
+          "ioValues": [
+            {
+              "name": "selection",
+              "ioValue": "__GEOMETRY_INPUT__"
+            },
+            {
+              "name": "clearEdges",
+              "ioValue": 10
+            },
+            {
+              "name": "clearFaces",
+              "ioValue": false
+            },
+            {
+              "name": "clearParts",
+              "ioValue": false
+            }
+          ],
+          "topLevel": false,
+          "allAtoms": [
+            {
+              "atomType": "Output",
+              "x": 1,
+              "y": 0.5,
+              "uniqueID": "id-333",
+              "ioValues": [
+                {
+                  "name": "number or geometry",
+                  "ioValue": "__GEOMETRY_INPUT__"
+                }
+              ]
+            },
+            {
+              "atomType": "Code",
+              "x": 0.4,
+              "y": 0.7,
+              "uniqueID": "id-334",
+              "ioValues": [
+                {
+                  "name": "selection",
+                  "ioValue": "__GEOMETRY_INPUT__"
+                },
+                {
+                  "name": "clearFaces",
+                  "ioValue": false
+                },
+                {
+                  "name": "clearEdges",
+                  "ioValue": 10
+                },
+                {
+                  "name": "clearParts",
+                  "ioValue": false
+                }
+              ],
+              "interpreterVersion": 1,
+              "code": "function run(selection: Assembly, clearFaces: boolean, clearEdges: boolean, clearParts: boolean) {\n  return selection.onLeafs((leaf) => {\n    if (leaf.selection) {\n      if (clearFaces) leaf.selection.faces = []\n      if (clearEdges) leaf.selection.edges = []\n      if (clearParts) leaf.selection.part = false;\n    }\n    return leaf;\n  })?.skipDisjointPostprocess()\n}",
+              "compiledCode": "\"use strict\";\nfunction run(selection, clearFaces, clearEdges, clearParts) {\n    return selection.onLeafs((leaf) => {\n        if (leaf.selection) {\n            if (clearFaces)\n                leaf.selection.faces = [];\n            if (clearEdges)\n                leaf.selection.edges = [];\n            if (clearParts)\n                leaf.selection.part = false;\n        }\n        return leaf;\n    })?.skipDisjointPostprocess();\n}\n"
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.1538,
+              "uniqueID": "id-335",
+              "name": "selection",
+              "type": "geometry",
+              "options": []
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.2462,
+              "uniqueID": "id-336",
+              "name": "clearEdges",
+              "type": "boolean",
+              "options": []
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.3385,
+              "uniqueID": "id-337",
+              "name": "clearFaces",
+              "type": "boolean",
+              "options": []
+            },
+            {
+              "atomType": "Input",
+              "x": 0.0254,
+              "y": 0.4308,
+              "uniqueID": "id-338",
+              "name": "clearParts",
+              "type": "boolean",
+              "options": []
+            }
+          ],
+          "allConnectors": [
+            {
+              "ap2Name": "number or geometry",
+              "ap1ID": "id-334",
+              "ap2ID": "id-333"
+            },
+            {
+              "ap2Name": "selection",
+              "ap1ID": "id-335",
+              "ap2ID": "id-334"
+            },
+            {
+              "ap2Name": "clearEdges",
+              "ap1ID": "id-336",
+              "ap2ID": "id-334"
+            },
+            {
+              "ap2Name": "clearFaces",
+              "ap1ID": "id-337",
+              "ap2ID": "id-334"
+            },
+            {
+              "ap2Name": "clearParts",
+              "ap1ID": "id-338",
+              "ap2ID": "id-334"
+            }
+          ],
+          "parentRepo": {
+            "lastFoundGit": "2026-10-12T18:23:38.928Z",
+            "privateRepo": false,
+            "repoName": "select.Clear",
+            "dateCreated": "2026-08-20T19:02:54Z",
+            "likes": 0,
+            "pngURL": "https://raw.githubusercontent.com/tristan-huber/select.Clear/master/project.png?sanitize=true",
+            "readme": "https://raw.githubusercontent.com/tristan-huber/select.Clear/master/README.md?sanitize=true",
+            "yyyy": 2026,
+            "topMoleculeID": "",
+            "userRanking": 0,
+            "userSetAsThumbnail": false,
+            "githubMoleculesUsed": [],
+            "html_url": "https://github.com/tristan-huber/select.Clear",
+            "topics": [
+              "abundance-tool"
+            ],
+            "pullRequests": [],
+            "forks": 0,
+            "dateModified": "2026-09-03T20:46:51Z",
+            "ranking": 2,
+            "searchField": "select.clear tristan-huber clears selections on the input assembly. booleans control whether you clear edge selection, clear face selection, or clear part selection, or all of the above. abundance-tool",
+            "owner": "tristan-huber",
+            "description": "clears selections on the input assembly. Booleans control whether you clear edge selection, clear face selection, or clear part selection, or all of the above.",
+            "contentURL": "https://raw.githubusercontent.com/tristan-huber/select.Clear/master/project.abundance?sanitize=true",
+            "svgURL": "https://raw.githubusercontent.com/tristan-huber/select.Clear/master/project.svg?sanitize=true",
+            "isLocal": false
+          },
+          "unitsKey": "Unitless",
+          "fileTypeVersion": 1,
+          "lastReloadedFromGithubAt": 1791834204755
+        }
+      ],
+      "allConnectors": [
+        {
+          "ap2Name": "selection",
+          "ap1ID": "id-329",
+          "ap2ID": "id-332"
+        },
+        {
+          "ap2Name": "toFillet",
+          "ap1ID": "id-330",
+          "ap2ID": "id-329"
+        },
+        {
+          "ap2Name": "radius",
+          "ap1ID": "id-331",
+          "ap2ID": "id-329"
+        },
+        {
+          "ap2Name": "number or geometry",
+          "ap1ID": "id-332",
+          "ap2ID": "id-328"
+        }
+      ],
+      "parentRepo": {
+        "contentURL": "https://raw.githubusercontent.com/tristan-huber/selected.Fillet/master/project.abundance?sanitize=true",
+        "dateCreated": "2026-07-21T21:29:20Z",
+        "dateModified": "739901",
+        "description": "Fillet the only the selected edges of an assembly. You can also input face or sub-assembly selections, edges will be filleted if they meet any of the selection criteria, eg on a selected subassembly, on a selected face. Default fillets all edges.",
+        "forks": 0,
+        "githubMoleculesUsed": [
+          {
+            "owner": "tristan-huber",
+            "repoName": "select.Clear"
+          }
+        ],
+        "html_url": "https://github.com/tristan-huber/selected.Fillet",
+        "lastFoundGit": "2026-11-09T18:23:39.053Z",
+        "likes": 0,
+        "owner": "tristan-huber",
+        "pngURL": "https://raw.githubusercontent.com/tristan-huber/selected.Fillet/master/project.png?sanitize=true",
+        "privateRepo": false,
+        "projectInputs": [
+          {
+            "name": "shape",
+            "type": "edgeselect"
+          },
+          {
+            "name": "radius",
+            "type": "number"
+          }
+        ],
+        "pullRequests": [],
+        "ranking": 3,
+        "readme": "https://raw.githubusercontent.com/tristan-huber/selected.Fillet/master/README.md?sanitize=true",
+        "searchField": "selected.fillet tristan-huber fillet the only the selected edges of an assembly. you can also input face or sub-assembly selections, edges will be filleted if they meet any of the selection criteria, eg on a selected subassembly, on a selected face. default fillets all edges. abundance-tool",
+        "svgURL": "https://raw.githubusercontent.com/tristan-huber/selected.Fillet/master/project.svg?sanitize=true",
+        "topMoleculeID": "",
+        "topics": [
+          "abundance-tool"
+        ],
+        "userRanking": 0,
+        "userSetAsThumbnail": false,
+        "yyyy": 2026,
+        "repoName": "selected.Fillet",
+        "isLocal": false
+      },
+      "unitsKey": "Unitless",
+      "fileTypeVersion": 1,
+      "scaleToProjectUnits": true,
+      "lastReloadedFromGithubAt": 1794273039512
+    },
+    {
       "atomType": "Extrude",
-      "x": 0.5562,
-      "y": 0.5887,
+      "x": 0.3492,
+      "y": 0.3155,
       "uniqueID": "id-8",
       "ioValues": [
         {
@@ -359,8 +1006,7 @@
         },
         {
           "name": "height",
-          "ioValue": 3,
-          "currentEquation": "3"
+          "ioValue": 3
         }
       ]
     }
@@ -380,6 +1026,11 @@
       "ap2Name": "geometry",
       "ap1ID": "id-8",
       "ap2ID": "id-200"
+    },
+    {
+      "ap2Name": "shape",
+      "ap1ID": "id-8",
+      "ap2ID": "id-339"
     }
   ],
   "unitsKey": "MM",
